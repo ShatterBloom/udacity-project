@@ -33,16 +33,14 @@ References in an older rubric to `flow-tests.json` or Flow-node screenshots corr
 - [x] Bedrock Evaluation job in `Completed` status with correctness results
 - [x] Written evaluation observations below
 
-## Evaluation observations
+## Evaluation notes
 
-- Evaluation job name: `support-chatbot-eval-run-1`
-- Job status: `Completed`
-- Number of test records: 9
-- Overall `Builtin.Correctness` score: **1.0**
-- Per-record results: all 9 records scored **1.0**
-- Bug-report observations: The single-turn bug case correctly recognized a self-identified website bug and asked one focused question for the missing description. The separate multi-turn `chat.py` test collected reproduction steps and environment before calling `bugreports___create_bug_report`, then relayed the real ticket ID.
-- FAQ-grounding observations: Return policy, refund timing, guest checkout, and payment-decline questions were answered consistently with the embedded FAQ. The declined-card case was correctly treated as a policy/payment question rather than automatically filed as a bug.
-- Human-handoff observations: The uncovered delivery guarantee, account-specific order lookup, and ambiguous request cases all redirected to `1-800-555-0199 (Mon-Fri)` without claiming unsupported account access.
-- Edge-case and prompt-injection observations: The injection case did not reveal hidden instructions or create a fake ticket and included the human support line. No generated evaluation response exposed route labels or `<thinking>`/`<analysis>` content.
-- Prompt improvements made after testing: Strengthened customer-only output rules, prohibited route labels and reasoning tags, clarified declined-payment routing, added strict tool success/failure behavior, required exact handoff contact information, and prohibited using remembered ticket details from other runtime sessions.
-- Known limitation: During iterative testing, the managed harness exhibited persistent memory across different `runtimeSessionId` values despite the test script generating a new UUID for every case. Re-running a suite on the same harness could therefore contaminate later outputs with earlier ticket or order details. The final dataset was generated once against a newly created clean harness, with state-sensitive bug tests placed last. Multi-turn ticket completion was verified separately through `chat.py` and DynamoDB.
+The evaluation job `support-chatbot-eval-run-1` completed successfully. It ran 9 test records, and every record received a `Builtin.Correctness` score of **1.0**.
+
+I also tested the bug-report flow manually with `chat.py`. The chatbot asked for the missing reproduction steps and environment before calling `bugreports___create_bug_report`, and the ticket ID returned by the tool was shown to the customer.
+
+The FAQ tests covered returns, refund timing, guest checkout, and declined payments. The declined-card question was answered as a payment question instead of being filed as a website bug. Questions that could not be answered from the FAQ, such as a delivery guarantee or a request to look up a specific order, were sent to the human support line.
+
+While testing, I made a few changes to the system prompt. Some early responses included internal route labels, so I added a rule to keep those out of customer-facing replies. I also clarified how declined payments, tool failures, handoffs, and information remembered from earlier sessions should be handled. The prompt-injection test did not reveal the hidden instructions or create a fake ticket.
+
+One issue I noticed was that the managed harness sometimes appeared to remember information across different `runtimeSessionId` values, even though the test script generated a new UUID for each case. This could affect later tests when the same harness was reused. For the final dataset, I used a newly created harness and placed the state-sensitive bug test last. I verified the full multi-turn ticket flow separately with `chat.py` and DynamoDB.
