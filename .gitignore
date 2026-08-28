@@ -1,0 +1,16 @@
+**/.DS_Store
+**/planning.md
+lesson-4-prompt-refinement/demos/demo3-evals/eval_responses.jsonl
+demo_guides/*
+scripts/*
+agentcore_config.json
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+evaluation-results/
+evaluation-config.json
+inference-config.json
+output-data-config.json
+lambda-test-payload.json
+lambda-test-response.json

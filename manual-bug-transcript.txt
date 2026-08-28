@@ -1,0 +1,27 @@
+Customer Support Chatbot - Multi-turn Bug Report Evidence
+Harness: support_chatbot
+Runtime session: 1ede850d-6661-4110-b6d2-2ad87c444b54-support-chat
+
+Customer:
+The checkout page crashes every time I click Pay.
+
+Assistant:
+Could you please provide the exact steps you take that lead to the checkout page crashing when you click Pay?
+
+Customer:
+Add an item to the cart, open checkout, and click the Pay button.
+
+Assistant:
+Thank you for the details. Could you please let me know which browser and operating system you are using when this issue occurs?
+
+Customer:
+Chrome 120 on macOS Sonoma.
+
+Tool event:
+[tool call] bugreports___create_bug_report
+
+Assistant:
+Thank you for your patience. Your bug report has been successfully filed. The ticket ID is 267e5ab4-943b-4f8a-a326-b7c82b5a6859, and it is now open for the engineering team to follow up.
+
+Verification:
+The tool was not called until description, reproduction steps, and environment were all present. The returned ticket ID was relayed to the customer and persisted in the bug-report-tool-stack-bug-reports DynamoDB table.
