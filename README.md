@@ -71,5 +71,3 @@ Follow the project setup order:
 3. Run `create_harness.py`.
 4. Test with `chat.py`.
 5. Generate evaluation data with `generate-eval-dataset.py --tests-json harness-tests.json`.
-
-Runtime configuration and AWS credentials are intentionally excluded from this repository.
