@@ -28,6 +28,26 @@ This is the updated AgentCore version of the project. Classification and routing
 
 The Bedrock Evaluation job completed successfully. All 9 records received a `Builtin.Correctness` score of `1.0`, for an overall score of `1.0`.
 
+## Evidence
+
+### DynamoDB ticket
+
+The completed bug report contains the customer-provided description, reproduction steps, environment, and `OPEN` status.
+
+![DynamoDB ticket](submission-evidence/01-dynamodb-ticket.png)
+
+### Multi-turn bug collection and tool call
+
+The assistant asks for missing information one field at a time, then calls `bugreports___create_bug_report` and relays the returned ticket ID.
+
+![Multi-turn bug transcript](submission-evidence/02-multiturn-bug-transcript.png)
+
+### Bedrock Evaluation
+
+The completed evaluation report shows an overall Correctness score of `1.00` across all 9 prompts.
+
+![Bedrock Evaluation result](submission-evidence/03-bedrock-evaluation-result.png)
+
 ## Run locally
 
 Use Python 3.9 or newer and AWS resources in `us-east-1`:
