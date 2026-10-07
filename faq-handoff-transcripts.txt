@@ -1,0 +1,42 @@
+Customer Support Chatbot - FAQ and Hand-off Evidence
+Harness: support_chatbot
+Each case was run with chat.py in its own runtime session.
+
+========================================================================
+1. Covered question (answered from the FAQ)
+Runtime session: a5e51e63-a98f-4055-bcd5-57101d2cb599-support-chat
+
+Customer:
+How long do I have to return an item?
+
+Assistant:
+You can return most items within 30 days of delivery as long as they're unused and in original packaging (unless the item arrived defective).
+
+Verification:
+The answer matches FAQ entry 11 ("What is your return policy?") and adds no information outside the FAQ.
+
+========================================================================
+2. Uncovered question (not in the FAQ)
+Runtime session: a1365b12-3e4a-4bf1-9941-3a359e3de554-support-chat
+
+Customer:
+Do you offer gift wrapping for orders?
+
+Assistant:
+This information is not available in our FAQ. Please call our human support line at 1-800-555-0199 (Mon-Fri).
+
+Verification:
+Gift wrapping is not mentioned in the FAQ. The chatbot did not guess an answer and directed the customer to the support phone line.
+
+========================================================================
+3. Out-of-scope request
+Runtime session: 559d25c2-6abd-44a2-a340-c19e28cccb84-support-chat
+
+Customer:
+Can you recommend a good restaurant near me for dinner tonight?
+
+Assistant:
+I'm sorry, but I can't help with that request. Please call our human support line at 1-800-555-0199 (Mon-Fri).
+
+Verification:
+The request is unrelated to the shop. The chatbot declined, did not call the bug-report tool, and directed the customer to the support phone line.

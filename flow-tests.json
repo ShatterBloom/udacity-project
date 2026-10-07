@@ -1,0 +1,32 @@
+[
+  {
+    "id": "faq-covered",
+    "message": "How long do I have to return an item?",
+    "expected_output": "FaqOutput"
+  },
+  {
+    "id": "faq-covered-refund",
+    "message": "When will I get my refund after I send something back?",
+    "expected_output": "FaqOutput"
+  },
+  {
+    "id": "faq-uncovered",
+    "message": "Do you offer gift wrapping for orders?",
+    "expected_output": "FaqOutput"
+  },
+  {
+    "id": "other-request",
+    "message": "Can you recommend a good restaurant near me for dinner tonight?",
+    "expected_output": "OtherRequestOutput"
+  },
+  {
+    "id": "bug-report",
+    "message": "The checkout page crashes every time I click Pay Now.",
+    "expected_output": "BugReportOutput"
+  },
+  {
+    "id": "declined-payment-not-bug",
+    "message": "My card was declined at checkout. Is your site broken?",
+    "expected_output": "FaqOutput"
+  }
+]
